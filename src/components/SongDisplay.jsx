@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { nextLyric } from './../actions';
 
 const SongDisplay = ({ dispatch, song }) => {
+//'dispatch, song = props this component will receive; the {} is destructuring them from the larger props object; avoids having to do: props.song or props.dispatch'
   const { title, artist, songArray, arrayPosition, id } = song;
+  //^more destructuring (know that song prop is an entire object bc mapStateToProps() is gathering all song details from Redux and assigning them the key 'song'; this gives us a single prop containing all the stuff, title, artist etc)
   const currentLine = songArray[arrayPosition];
   let action;
+  //click event below dispatches actions to either advance lyrics 1 index or restart song
   return (
     <div>
       <h1>{title}</h1>
@@ -14,17 +18,9 @@ const SongDisplay = ({ dispatch, song }) => {
       <div onClick={e => {
         e.preventDefault();
         if(!(arrayPosition === songArray.length - 1)) {
-          action = {
-            type: 'NEXT_LYRIC',
-            currentSongId: id
-          };
-          dispatch(action);
+          dispatch(nextLyric(id));
         } else {
-          action = {
-            type: 'RESTART_SONG',
-            currentSongId: id
-          };
-          dispatch(action);
+          dispatch(restartSong(id));
         }
       }}>
         <h1>

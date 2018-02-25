@@ -9,7 +9,8 @@ function SongSearch(){
         if (!input.value.trim()) {
           return;
         }
-        // ...we'll add more custom logic here later...
+         // we will add more custom logic here later
+
         console.log('SEARCHED ARTIST:');
         console.log(input.value.trim());
         //...instead of these console.log()s....

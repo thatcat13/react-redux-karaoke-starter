@@ -14,7 +14,7 @@ const SongList = ({ dispatch, songList }) => {
         let song = songList[songId];
         return <li key = {songId} onClick = {() => {
           if (song.arrayPosition > 0){
-            dispatch(restartSong(songId)f);
+            dispatch(restartSong(songId));
           }
           dispatch(changeSong(songId));
         }}>

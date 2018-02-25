@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { restartSong } from './../actions';
-
-//this component displays the list of songs from Redux and dispatches actions when the user selects a song from that list
+import { restartSong, changeSong } from './../actions';
 
 const SongList = ({ dispatch, songList }) => {
-  let action;
   return (
     <div>
       <em>Or select from our list:</em>
